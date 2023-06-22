@@ -1,25 +1,25 @@
-FROM docker.io/library/node:18-alpine
+# Use the official Node.js image as the base image
+FROM node:18-alpine
+# ENV NODE_ENV = production
 
-# Create an app directory
+# Set the working directory in the container
 WORKDIR /app
 
-# Copy your project code to the app directory
-COPY . .
+# Copy package.json and package-lock.json to the container
+COPY package*.json ./
+COPY package-lock*.json ./
 
 # Install dependencies
 RUN npm install
 
-# Install webpack globally
-RUN npm install -g webpack
+# Copy the rest of the application code to the container
+COPY . .
 
-# Build the application
-RUN npm run build
-
-# Optionally, remove unnecessary dependencies
-RUN rm -fr node_modules
-
-# Expose the port your server listens on
+# Expose port 3000 for the Node.js server
 EXPOSE 3000
 
-# Specify the command to run your server
-CMD [ "node", "server.js" ]
+# Set environment variables for the database connection
+ENV DB_HOST=localhost DB_PORT=3306 DB_USER=admin DB_PASSWORD=admin123 DB_NAME=servicedb
+
+# Start the Node.js server
+CMD node server.js
