@@ -1,23 +1,25 @@
-# Start your image with a node base image
-FROM node:18-alpine
+FROM docker.io/library/node:18-alpine
 
-# The /app directory should act as the main application directory
+# Create an app directory
 WORKDIR /app
 
-# Copy the app package and package-lock.json file
-COPY package*.json ./
+# Copy your project code to the app directory
+COPY . .
 
-# Copy local directories to the current local directory of our docker image (/app)
-# COPY ./src ./src
-COPY ./public ./public
+# Install dependencies
+RUN npm install
 
-# Install node packages, install serve, build the app, and remove dependencies at the end
-RUN npm install \
-    && npm install -g serve \
-    && npm run build \
-    && rm -fr node_modules
+# Install webpack globally
+RUN npm install -g webpack
 
+# Build the application
+RUN npm run build
+
+# Optionally, remove unnecessary dependencies
+RUN rm -fr node_modules
+
+# Expose the port your server listens on
 EXPOSE 3000
 
-# Start the app using serve command
-CMD [ "serve", "-s", "build" ]
+# Specify the command to run your server
+CMD [ "node", "server.js" ]
