@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Display Photos</title>
+  </head>
+  <body>
+    <% for (let i = 0; i < photos.length; i++) { %>
+    <img src="/uploads/<%= photos[i] %>" alt="Photo <%= i + 1 %>" />
+    <% } %>
+  </body>
+</html>

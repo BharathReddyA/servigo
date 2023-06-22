@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Quicksand"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./assests/css/main.css" />
+    <link rel="stylesheet" href="./assests/css/index.css" />
+  </head>
+  <body>
+    <nav
+      class="navbar navbar-expand-md bg-dark navbar-dark fixed-top custom-nav"
+    >
+      <a class="navbar-brand" href="./">ServiGo</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#collapsibleNavbar"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div
+        class="collapse navbar-collapse flex-row-reverse"
+        id="collapsibleNavbar"
+      >
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="./">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./workerSignup.html">SignUp</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./workerLogin.html">Login</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container login-container mb-3">
+      <h1 class="brand-name pl-5">Sign Up</h1>
+      <div class="row pt-2 pb-5">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4 pt-3">
+          <form action="/workSignup" method="POST">
+            <label for="wname" class="brand-caption">Name:</label><br />
+            <input
+              type="text"
+              id="wname"
+              name="wname"
+              class="login-text mb-3"
+              required
+            /><br />
+
+            <label for="work_type" class="brand-caption">Work Type:</label><br />
+            <input
+              type="text"
+              id="work_type"
+              name="work_type"
+              class="login-text mb-3"
+              required
+            /><br />
+
+            <label for="wusername" class="brand-caption">Username:</label><br />
+            <input
+              type="text"
+              id="wusername"
+              name="wusername"
+              class="login-text mb-3"
+              required
+            /><br />
+
+            <label for="wphone" class="brand-caption">Phone:</label><br />
+            <input
+              type="text"
+              id="wphone"
+              name="wphone"
+              class="login-text mb-3"
+              required
+            /><br />
+
+            <label for="wpassword" class="brand-caption">Password:</label><br />
+            <input
+              type="password"
+              id="wpassword"
+              name="wpassword"
+              class="login-text mb-3"
+              required
+            /><br />
+
+            <input type="submit" class="submit-btn" value="Sign Up" />
+          </form>
+          <div class="brand-caption mt-5">
+            Already have an account <a href="./workerLogin.html">Login</a> using this
+            link
+          </div>
+        </div>
+        <div class="col-lg-4"></div>
+      </div>
+    </div>
+  </body>
+</html>

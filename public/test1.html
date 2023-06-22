@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta
+      name="google-signin-client_id"
+      content="114493932067-rltdsqta9pgeibo4ocfc2ek6l4u53ugm.apps.googleusercontent.com"
+    />
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script
+      async
+      defer
+      crossorigin="anonymous"
+      src="https://connect.facebook.net/en_US/sdk.js"
+    ></script>
+
+    <!-- <style>
+      .g-signin2 {
+        display: inline-block;
+        background-color: #4285f4;
+        color: white;
+        border-radius: 5px;
+        padding: 10px 20px;
+        text-decoration: none;
+      }
+    </style> -->
+  </head>
+  <body>
+    <h1>Google Login Example</h1>
+
+    <!-- Add the sign-in button -->
+    <div class="g-signin2" data-onsuccess="onSignIn">signin</div>
+
+    <div id="status"></div>
+
+    <script>
+      function onSignIn(googleUser) {
+        // Retrieve the Google user object
+        var profile = googleUser.getBasicProfile();
+
+        // Print user details
+        console.log("ID: " + profile.getId());
+        console.log("Name: " + profile.getName());
+        console.log("Image URL: " + profile.getImageUrl());
+        console.log("Email: " + profile.getEmail());
+
+        // // You can also get the user's ID token
+        // var id_token = googleUser.getAuthResponse().id_token;
+        // console.log("ID Token: " + id_token);
+
+        // // Add your own code here to handle the user data
+        // // For example, send the user data to your server for further processing
+
+        // // Redirect the user to another page
+        window.location.href =
+          "https://developers.google.com/identity/oauth2/web/guides/overview";
+
+        function statusChangeCallback(response) {
+          // Called with the results from FB.getLoginStatus().
+          console.log("statusChangeCallback");
+          console.log(response); // The current login status of the person.
+          if (response.status === "connected") {
+            // Logged into your webpage and Facebook.
+            testAPI();
+          } else {
+            // Not logged into your webpage or we are unable to tell.
+            document.getElementById("status").innerHTML =
+              "Please log " + "into this webpage.";
+          }
+        }
+
+        function checkLoginState() {
+          // Called when a person is finished with the Login Button.
+          FB.getLoginStatus(function (response) {
+            // See the onlogin handler
+            statusChangeCallback(response);
+          });
+        }
+
+        window.fbAsyncInit = function () {
+          FB.init({
+            appId: "{257708321827865}",
+            cookie: true, // Enable cookies to allow the server to access the session.
+            xfbml: true, // Parse social plugins on this webpage.
+            version: "{api-version}", // Use this Graph API version for this call.
+          });
+
+          FB.getLoginStatus(function (response) {
+            // Called after the JS SDK has been initialized.
+            statusChangeCallback(response); // Returns the login status.
+          });
+        };
+
+        function testAPI() {
+          // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
+          console.log("Welcome!  Fetching your information.... ");
+          FB.api("/me", function (response) {
+            console.log("Successful login for: " + response.name);
+            document.getElementById("status").innerHTML =
+              "Thanks for logging in, " + response.name + "!";
+          });
+        }
+      }
+    </script>
+  </body>
+</html>

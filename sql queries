@@ -1,0 +1,43 @@
+
+create database servicedb;
+use servicedb;
+CREATE TABLE users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  username VARCHAR(255) NOT NULL,
+  phone VARCHAR(20) NOT NULL,
+  password VARCHAR(255) NOT NULL
+);
+
+INSERT INTO users (name, username, phone, password)
+VALUES ('John Doe', 'johndoe@example.com', '1234567890', 'password123');
+SELECT * FROM users WHERE username = 'johndoe@example.com' AND password = 'password12';
+select * from users; 
+CREATE TABLE worker (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  wname VARCHAR(255) NOT NULL,
+  wwork_type VARCHAR(255) NOT NULL,
+  wusername VARCHAR(255) NOT NULL,
+  wphone VARCHAR(20) NOT NULL,
+  wpassword VARCHAR(255) NOT NULL
+  );
+INSERT INTO worker (wname, wwork_type, wusername, wphone, wpassword) values ('worker1', 'carpenter', 'worker1@example.com', '123', 'abc');
+SELECT * FROM worker;	
+SELECT * FROM worker WHERE work_type = 'carpenter';
+ALTER TABLE worker ADD COLUMN work_type VARCHAR(255);	
+SELECT * FROM worker WHERE wusername = 's' AND wpassword = 's';
+
+alter table worker drop column wwork_type;
+
+CREATE TABLE current_service (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  email VARCHAR(255) NOT NULL,
+  serviceType VARCHAR(255) NOT NULL,
+  address VARCHAR(255) NOT NULL,
+  photo_filename VARCHAR(255) NOT NULL,
+  photo_originalname VARCHAR(255) NOT NULL,
+  photo_mimetype VARCHAR(255) NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+alter table current_service add column username varchar(255);
+select * from current_service;
