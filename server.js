@@ -26,11 +26,11 @@ app.use(express.json());
 const MySQLStore = require('express-mysql-session')(session);
 
 const connection = mysql.createConnection({
-  host: process.env.DB_HOST,
-  port: process.env.DB_PORT,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
+  host: 'mysql-db',
+  port: '3306',
+  user: 'admin',
+  password: 'admin123',
+  database: 'servicedb',
 });
 
 // const sessionStore = new MySQLStore({
