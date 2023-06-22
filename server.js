@@ -54,7 +54,7 @@ app.use(
   })
 );
 
-app.get('/home-page', (req, res) => {
+app.get('/home', (req, res) => {
   res.render('home');
 });
 
