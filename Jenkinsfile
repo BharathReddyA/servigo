@@ -2,14 +2,19 @@ pipeline {
     agent {
         docker {
             image 'jenkins/jenkins:lts'
-            args '-u root:root -p 8080:8080 -p 50000:50000 --link servigo-cont:mysql-db'
+            args '--user root:root -p 8080:8080 -p 50000:50000 --link servigo-cont:mysql-db -v /var/run/docker.sock:/var/run/docker.sock'
         }
+    }
+    options {
+        skipDefaultCheckout()
     }
 
     stages {
         stage('Build') {
             steps {
-                sh 'docker build -t servigo-image .'
+                script {
+                    docker.build('servigo-image', '.')
+                }
             }
         }
 
